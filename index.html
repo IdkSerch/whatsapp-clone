@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatApp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/auth.css"/>
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <div class="auth-wrapper">
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="url(#grad)"/>
+          <path d="M20 8C13.37 8 8 13.37 8 20c0 2.14.56 4.14 1.54 5.87L8 32l6.34-1.51A11.94 11.94 0 0020 32c6.63 0 12-5.37 12-12S26.63 8 20 8zm6.46 16.54c-.28.78-1.62 1.49-2.24 1.58-.56.08-1.27.12-2.05-.13-.47-.15-1.08-.35-1.85-.68-3.26-1.41-5.38-4.71-5.55-4.93-.16-.22-1.33-1.77-1.33-3.37 0-1.6.84-2.39 1.13-2.71.3-.32.65-.4.87-.4l.62.01c.2 0 .47-.07.73.56.28.65.95 2.32 1.03 2.49.08.17.14.37.03.59-.11.22-.17.36-.33.55-.16.19-.34.43-.49.57-.16.16-.33.33-.14.65.19.32.84 1.39 1.81 2.25 1.24 1.11 2.29 1.45 2.61 1.61.32.16.51.14.7-.08.19-.22.8-.94 1.01-1.26.21-.32.43-.27.72-.16.29.11 1.84.87 2.16 1.03.32.16.53.24.61.37.08.14.08.8-.2 1.57z" fill="white"/>
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="40" y2="40">
+              <stop offset="0%" stop-color="#00C853"/>
+              <stop offset="100%" stop-color="#00897B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1 class="brand-name">ChatApp</h1>
+      <p class="brand-tagline">Mensajes rápidos, conexiones reales.</p>
+    </div>
+
+    <div class="auth-card">
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('login')">Iniciar Sesión</button>
+        <button class="tab" onclick="showTab('register')">Registrarse</button>
+        <div class="tab-indicator" id="tabIndicator"></div>
+      </div>
+
+      <!-- Login Form -->
+      <div id="loginForm" class="form-section active">
+        <div class="form-group">
+          <label>Usuario</label>
+          <input type="text" id="loginUsername" placeholder="Ingresa tu usuario" autocomplete="off"/>
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" id="loginPassword" placeholder="••••••••"/>
+        </div>
+        <p class="form-error" id="loginError"></p>
+        <button class="btn-primary" onclick="login()">Entrar</button>
+      </div>
+
+      <!-- Register Form -->
+      <div id="registerForm" class="form-section">
+        <div class="avatar-upload" onclick="document.getElementById('avatarInput').click()">
+          <img id="avatarPreview" src="" alt=""/>
+          <div class="avatar-placeholder" id="avatarPlaceholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 12a4 4 0 100-8 4 4 0 000 8z"/>
+              <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/>
+            </svg>
+            <span>Foto de perfil</span>
+          </div>
+        </div>
+        <input type="file" id="avatarInput" accept="image/*" style="display:none" onchange="previewAvatar(event)"/>
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" id="regName" placeholder="Tu nombre"/>
+        </div>
+        <div class="form-group">
+          <label>Usuario</label>
+          <input type="text" id="regUsername" placeholder="Nombre de usuario único"/>
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres"/>
+        </div>
+        <p class="form-error" id="registerError"></p>
+        <button class="btn-primary" onclick="register()">Crear cuenta</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
